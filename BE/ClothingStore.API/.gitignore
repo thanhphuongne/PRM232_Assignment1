@@ -1,0 +1,299 @@
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.sln.docstates
+*.cache
+*.vs/
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa]rchive/
+[Dd]ist/
+Out/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio / Visual Studio Code
+.vs/
+.vscode/
+excludefromcompile
+*.csproj.user
+*.cache
+*.bak
+*.swp
+*.tmp
+*.temp
+*.log
+*.lock
+*.ncb
+*.autosave
+*.pdb
+*.tlog
+*.idb
+*.dbmdl
+*.db
+*.sdf
+*.pdb
+*.obj
+*.err
+*.iobj
+*.ipdb
+*.ilk
+*.meta
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/**/*.code-snippets
+
+# MonoDevelop / Xamarin Studio
+*.userprefs
+
+# Visual Studio LightSwitch build output
+**/*.HTMLClient/GeneratedArtifacts
+**/*.DesktopClient/GeneratedArtifacts
+**/*.DesktopClient/ModelManifest.xml
+**/*.Server/GeneratedArtifacts
+**/*.Server/ModelManifest.xml
+_Pvt_Extensions
+
+# Visual Studio LightSwitch generated files
+GeneratedArtifacts/
+
+# Visual Studio Code files
+.history/
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Trace Files
+*.e2e
+
+# Visual Studio Code files
+.vscode/settings.json
+.vscode/launch.json
+.vscode/tasks.json
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# MightyMoose
+*.mm.*
+AutoTest.Net/
+
+# Web workbench (sass)
+.sass-cache/
+
+# Installshield output folder
+[Ee]xpress/
+
+# DocProject
+Help/
+
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+**/*.pubxml
+**.pubxml.user
+
+# Publish output
+**/Properties/PublishProfiles/**
+
+# NuGet v3 local cache
+[%LocalAppData%]/NuGet/v3-cache
+
+# NuGet package restore folder
+packages/
+packages-build/
+
+# NuGet v1 local cache
+~/.nuget/packages/
+
+# NuGet temporary files
+*.nuget.props
+*.nuget.targets
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Windows Store app package directory
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+*.appxbundle
+*.appxupload
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+*.vsconfig
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Visual Studio Trace Files
+*.e2e
+
+# Windows SDK
+SDKs/
+
+# Visual Studio profiler
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# Windows Store app package directory
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+*.appxbundle
+*.appxupload
+
+# Visual Studio cache files
+# files ending in .cache can be ignored
+*.[Cc]ache
+*.vsconfig
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# MightyMoose
+*.mm.*
+AutoTest.Net/
+
+# Web workbench (sass)
+.sass-cache/
+
+# Installshield output folder
+[Ee]xpress/
+
+# DocProject
+Help/
+
+# Click-Once directory
+publish/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+**/*.pubxml
+**.pubxml.user
+
+# Publish output
+**/Properties/PublishProfiles/**
+
+# NuGet v3 local cache
+[%LocalAppData%]/NuGet/v3-cache
+
+# NuGet package restore folder
+packages/
+packages-build/
+
+# NuGet v1 local cache
+~/.nuget/packages/
+
+# NuGet temporary files
+*.nuget.props
+*.nuget.targets
+
+# Entity Framework Migrations
+**/Migrations
+# Unless you want to include them in your project, exclude migration files:
+# **/Migrations/*.cs
+
+# Entity Framework 6 migrations
+**/Migrations/*.cs
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
