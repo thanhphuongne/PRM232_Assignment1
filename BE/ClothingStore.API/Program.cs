@@ -11,7 +11,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddDbContext<ClothingStoreContext>(options =>
-            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddAuthorization();
         builder.Services.AddCors(options =>
         {
@@ -28,6 +28,12 @@ public class Program
         builder.Services.AddSwaggerGen();
 
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<ClothingStoreContext>();
+            db.Database.EnsureCreated();
+        }
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
