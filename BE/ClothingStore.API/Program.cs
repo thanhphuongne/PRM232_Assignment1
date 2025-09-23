@@ -1,4 +1,6 @@
 
+using Microsoft.EntityFrameworkCore;
+
 namespace ClothingStore.API;
 
 public class Program
@@ -8,7 +10,18 @@ public class Program
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
+        builder.Services.AddDbContext<ClothingStoreContext>(options =>
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddAuthorization();
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAll", policy =>
+            {
+                policy.AllowAnyOrigin()
+                      .AllowAnyMethod()
+                      .AllowAnyHeader();
+            });
+        });
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
@@ -24,27 +37,56 @@ public class Program
         }
 
         app.UseHttpsRedirection();
-
+        app.UseCors("AllowAll");
         app.UseAuthorization();
 
-        var summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
+        // Product CRUD endpoints
+        app.MapGet("/api/products", async (ClothingStoreContext db) =>
+            await db.Products.ToListAsync())
+            .WithName("GetProducts")
+            .WithOpenApi();
 
-        app.MapGet("/weatherforecast", (HttpContext httpContext) =>
+        app.MapGet("/api/products/{id}", async (int id, ClothingStoreContext db) =>
+            await db.Products.FindAsync(id) is Product product ? Results.Ok(product) : Results.NotFound())
+            .WithName("GetProduct")
+            .WithOpenApi();
+
+        app.MapPost("/api/products", async (Product product, ClothingStoreContext db) =>
         {
-            var forecast =  Enumerable.Range(1, 5).Select(index =>
-                new WeatherForecast
-                {
-                    Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                    TemperatureC = Random.Shared.Next(-20, 55),
-                    Summary = summaries[Random.Shared.Next(summaries.Length)]
-                })
-                .ToArray();
-            return forecast;
+            db.Products.Add(product);
+            await db.SaveChangesAsync();
+            return Results.Created($"/api/products/{product.Id}", product);
         })
-        .WithName("GetWeatherForecast")
+        .WithName("CreateProduct")
+        .WithOpenApi();
+
+        app.MapPut("/api/products/{id}", async (int id, Product inputProduct, ClothingStoreContext db) =>
+        {
+            var product = await db.Products.FindAsync(id);
+            if (product is null) return Results.NotFound();
+
+            product.Name = inputProduct.Name;
+            product.Description = inputProduct.Description;
+            product.Price = inputProduct.Price;
+            product.ImageUrl = inputProduct.ImageUrl;
+
+            await db.SaveChangesAsync();
+            return Results.NoContent();
+        })
+        .WithName("UpdateProduct")
+        .WithOpenApi();
+
+        app.MapDelete("/api/products/{id}", async (int id, ClothingStoreContext db) =>
+        {
+            if (await db.Products.FindAsync(id) is Product product)
+            {
+                db.Products.Remove(product);
+                await db.SaveChangesAsync();
+                return Results.NoContent();
+            }
+            return Results.NotFound();
+        })
+        .WithName("DeleteProduct")
         .WithOpenApi();
 
         app.Run();
