@@ -11,7 +11,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddDbContext<ClothingStoreContext>(options =>
-            options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddAuthorization();
         builder.Services.AddCors(options =>
         {
