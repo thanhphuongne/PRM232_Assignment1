@@ -66,7 +66,7 @@ export default function NewProduct() {
                     onChange={handleChange}
                     required
                     placeholder="Enter product name"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none placeholder-gray-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none placeholder-gray-500 text-gray-900"
                   />
                 </div>
                 <div className="md:col-span-2">
@@ -78,7 +78,7 @@ export default function NewProduct() {
                     required
                     rows={4}
                     placeholder="Describe your product"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none resize-none placeholder-gray-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none resize-none placeholder-gray-500 text-gray-900"
                   />
                 </div>
                 <div>
@@ -92,7 +92,7 @@ export default function NewProduct() {
                     step="0.01"
                     min="0"
                     placeholder="0.00"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none placeholder-gray-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none placeholder-gray-500 text-gray-900"
                   />
                 </div>
                 <div>
@@ -103,7 +103,7 @@ export default function NewProduct() {
                     value={formData.imageUrl}
                     onChange={handleChange}
                     placeholder="https://example.com/image.jpg"
-                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none placeholder-gray-500"
+                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-purple-500 focus:ring-2 focus:ring-purple-200 transition-all duration-300 outline-none placeholder-gray-500 text-gray-900"
                   />
                 </div>
               </div>
