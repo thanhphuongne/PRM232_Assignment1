@@ -38,28 +38,79 @@ export default function ProductDetail() {
     }
   };
 
-  if (loading) return <div className="text-center mt-10">Loading...</div>;
-  if (!product) return <div className="text-center mt-10">Product not found</div>;
+  if (loading) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
+    </div>
+  );
+
+  if (!product) return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <div className="text-6xl mb-4">😔</div>
+        <h2 className="text-2xl font-bold text-gray-800 mb-2">Product not found</h2>
+        <p className="text-gray-600 mb-6">The product you're looking for doesn't exist.</p>
+        <Link href="/" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
+          Back to Products
+        </Link>
+      </div>
+    </div>
+  );
 
   return (
-    <div className="container mx-auto p-4">
-      <div className="mb-4">
-        <Link href="/" className="text-blue-500 hover:underline">← Back to Products</Link>
-      </div>
-      <div className="max-w-2xl mx-auto">
-        {product.imageUrl && (
-          <img src={product.imageUrl} alt={product.name} className="w-full h-64 object-cover mb-4 rounded" />
-        )}
-        <h1 className="text-3xl font-bold mb-4">{product.name}</h1>
-        <p className="text-gray-600 mb-4">{product.description}</p>
-        <p className="text-2xl font-bold mb-6">${product.price}</p>
-        <div className="flex gap-4">
-          <Link href={`/products/${product.id}/edit`} className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
-            Edit
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+      <div className="container mx-auto px-6 py-8">
+        <div className="mb-6">
+          <Link href="/" className="inline-flex items-center text-purple-600 hover:text-purple-800 transition-colors duration-300 font-medium">
+            <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            </svg>
+            Back to Products
           </Link>
-          <button onClick={handleDelete} className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
-            Delete
-          </button>
+        </div>
+        <div className="max-w-4xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
+          <div className="md:flex">
+            <div className="md:w-1/2">
+              {product.imageUrl ? (
+                <div className="relative h-96 md:h-full">
+                  <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+                </div>
+              ) : (
+                <div className="h-96 md:h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                  <div className="text-center">
+                    <div className="text-6xl mb-4">🖼️</div>
+                    <span className="text-gray-500 text-lg">No Image Available</span>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="md:w-1/2 p-8 md:p-12">
+              <div className="h-full flex flex-col justify-center">
+                <h1 className="text-4xl font-bold text-gray-800 mb-6 leading-tight">{product.name}</h1>
+                <p className="text-gray-600 text-lg mb-8 leading-relaxed">{product.description}</p>
+                <div className="mb-8">
+                  <span className="text-5xl font-bold text-transparent bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text">
+                    ${product.price}
+                  </span>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Link
+                    href={`/products/${product.id}/edit`}
+                    className="flex-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-6 py-3 rounded-full hover:from-yellow-500 hover:to-orange-600 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold text-center"
+                  >
+                    Edit Product
+                  </Link>
+                  <button
+                    onClick={handleDelete}
+                    className="flex-1 bg-gradient-to-r from-red-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-red-600 hover:to-pink-600 transition-all duration-300 transform hover:scale-105 shadow-lg font-semibold"
+                  >
+                    Delete Product
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
