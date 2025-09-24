@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { getProduct, updateProduct, Product } from '../../../../lib/api';
+import { getProduct, updateProduct } from '../../../../lib/api';
 
 export default function EditProduct() {
   const params = useParams();

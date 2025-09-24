@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getProduct, deleteProduct, Product } from '../../../lib/api';
 
 export default function ProductDetail() {
@@ -49,7 +50,7 @@ export default function ProductDetail() {
       <div className="text-center">
         <div className="text-6xl mb-4">😔</div>
         <h2 className="text-2xl font-bold text-gray-800 mb-2">Product not found</h2>
-        <p className="text-gray-600 mb-6">The product you're looking for doesn't exist.</p>
+        <p className="text-gray-600 mb-6">The product you&apos;re looking for doesn&apos;t exist.</p>
         <Link href="/" className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-full hover:from-purple-700 hover:to-pink-700 transition-all duration-300">
           Back to Products
         </Link>
@@ -73,7 +74,7 @@ export default function ProductDetail() {
             <div className="md:w-1/2">
               {product.imageUrl ? (
                 <div className="relative h-96 md:h-full">
-                  <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
+                  <Image src={product.imageUrl} alt={product.name} width={600} height={400} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
                 </div>
               ) : (

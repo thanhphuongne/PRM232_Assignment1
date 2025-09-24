@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getProducts, Product } from '../lib/api';
 
 export default function Home() {
@@ -45,7 +46,7 @@ export default function Home() {
             <div key={product.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group">
               {product.imageUrl ? (
                 <div className="relative overflow-hidden">
-                  <img src={product.imageUrl} alt={product.name} className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300" />
+                  <Image src={product.imageUrl} alt={product.name} width={400} height={256} className="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
               ) : (
