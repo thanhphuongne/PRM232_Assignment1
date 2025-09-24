@@ -1,6 +1,5 @@
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Sqlite;
 
 namespace ClothingStore.API;
 
@@ -12,7 +11,7 @@ public class Program
 
         // Add services to the container.
         builder.Services.AddDbContext<ClothingStoreContext>(options =>
-            options.UseSqlite("Data Source=clothingstore.db"));
+            options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
         builder.Services.AddAuthorization();
         builder.Services.AddCors(options =>
         {
