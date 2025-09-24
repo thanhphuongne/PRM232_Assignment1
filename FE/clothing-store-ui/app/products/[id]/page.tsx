@@ -90,7 +90,7 @@ export default function ProductDetail() {
                 <h1 className="text-4xl font-bold text-gray-800 mb-6 leading-tight">{product.name}</h1>
                 <p className="text-gray-600 text-lg mb-8 leading-relaxed">{product.description}</p>
                 <div className="mb-8">
-                  <span className="text-5xl font-bold text-transparent bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text">
+                  <span className="text-5xl font-bold text-gray-900">
                     ${product.price}
                   </span>
                 </div>

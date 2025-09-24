@@ -57,7 +57,7 @@ export default function Home() {
                 <h2 className="text-xl font-bold text-gray-800 mb-2 line-clamp-1">{product.name}</h2>
                 <p className="text-gray-600 mb-4 line-clamp-2 text-sm">{product.description}</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-2xl font-bold text-purple-600">${product.price}</span>
+                  <span className="text-2xl font-bold text-gray-900">${product.price}</span>
                   <Link href={`/products/${product.id}`} className="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all duration-300 text-sm font-medium">
                     View Details
                   </Link>
