@@ -296,4 +296,6 @@ $RECYCLE.BIN/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
+# Environment variables
+.env
 Thumbs.db
