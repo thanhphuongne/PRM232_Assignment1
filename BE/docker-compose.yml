@@ -14,7 +14,7 @@ services:
 
   api:
     build:
-      context: ./ClothingStore.API
+      context: ./BE/ClothingStore.API
       dockerfile: Dockerfile
     environment:
       ConnectionStrings__DefaultConnection: "Host=db;Database=ClothingStoreDb;Username=postgres;Password=password"
