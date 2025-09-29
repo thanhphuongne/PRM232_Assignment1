@@ -58,8 +58,8 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
         app.UseCors("AllowAll");
+        app.UseHttpsRedirection();
         app.UseAuthorization();
 
         // Product CRUD endpoints
