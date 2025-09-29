@@ -36,18 +36,18 @@ public class Program
 
         var app = builder.Build();
 
-        // Ensure database is created (only if connection works)
+        // Apply migrations on startup
         try
         {
             using (var scope = app.Services.CreateScope())
             {
                 var db = scope.ServiceProvider.GetRequiredService<ClothingStoreContext>();
-                db.Database.EnsureCreated();
+                db.Database.Migrate();
             }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Database initialization failed: {ex.Message}");
+            Console.WriteLine($"Database migration failed: {ex.Message}");
             // Continue without crashing
         }
 
