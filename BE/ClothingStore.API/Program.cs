@@ -9,7 +9,10 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        DotNetEnv.Env.Load();
+        if (File.Exists(".env"))
+        {
+            DotNetEnv.Env.Load();
+        }
         var builder = WebApplication.CreateBuilder(args);
 
         // Add services to the container.
@@ -33,11 +36,12 @@ public class Program
 
         var app = builder.Build();
 
-        using (var scope = app.Services.CreateScope())
-        {
-            var db = scope.ServiceProvider.GetRequiredService<ClothingStoreContext>();
-            db.Database.EnsureCreated();
-        }
+        // For production, remove or use migrations instead of EnsureCreated
+        // using (var scope = app.Services.CreateScope())
+        // {
+        //     var db = scope.ServiceProvider.GetRequiredService<ClothingStoreContext>();
+        //     db.Database.EnsureCreated();
+        // }
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
