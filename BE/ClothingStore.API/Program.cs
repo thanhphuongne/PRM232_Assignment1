@@ -36,10 +36,19 @@ public class Program
 
         var app = builder.Build();
 
-        using (var scope = app.Services.CreateScope())
+        // Ensure database is created (only if connection works)
+        try
         {
-            var db = scope.ServiceProvider.GetRequiredService<ClothingStoreContext>();
-            db.Database.EnsureCreated();
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ClothingStoreContext>();
+                db.Database.EnsureCreated();
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Database initialization failed: {ex.Message}");
+            // Continue without crashing
         }
 
         // Configure the HTTP request pipeline.
