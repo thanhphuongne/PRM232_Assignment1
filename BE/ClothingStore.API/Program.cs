@@ -36,12 +36,11 @@ public class Program
 
         var app = builder.Build();
 
-        // For production, remove or use migrations instead of EnsureCreated
-        // using (var scope = app.Services.CreateScope())
-        // {
-        //     var db = scope.ServiceProvider.GetRequiredService<ClothingStoreContext>();
-        //     db.Database.EnsureCreated();
-        // }
+        using (var scope = app.Services.CreateScope())
+        {
+            var db = scope.ServiceProvider.GetRequiredService<ClothingStoreContext>();
+            db.Database.EnsureCreated();
+        }
 
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
