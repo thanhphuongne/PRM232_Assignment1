@@ -1,9 +1,9 @@
 # Use the official .NET 8 SDK image to build the app
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /src
+WORKDIR /src/BE/ClothingStore.API
 
 # Copy the project file and restore dependencies
-COPY BE/ClothingStore.API/ClothingStore.API.csproj .
+COPY ClothingStore.API.csproj .
 RUN dotnet restore
 
 # Copy the rest of the source code
