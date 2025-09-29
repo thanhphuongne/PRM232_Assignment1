@@ -19,9 +19,6 @@ WORKDIR /app
 # Copy the published app from the build stage
 COPY --from=build /app/publish .
 
-# Copy the .env file
-COPY --from=build /src/BE/ClothingStore.API/.env .
-
 # Expose the port the app runs on
 EXPOSE 80
 
