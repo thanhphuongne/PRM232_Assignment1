@@ -78,8 +78,9 @@ public class Program
             .WithName("GetProduct")
             .WithOpenApi();
 
-        app.MapPost("/api/products", async (Product product, ClothingStoreContext db) =>
+        app.MapPost("/api/products", async (ProductCreateDto dto, ClothingStoreContext db) =>
         {
+            var product = new Product { Name = dto.Name, Description = dto.Description, Price = dto.Price, ImageUrl = dto.ImageUrl };
             db.Products.Add(product);
             await db.SaveChangesAsync();
             return Results.Created($"/api/products/{product.Id}", product);
@@ -87,15 +88,15 @@ public class Program
         .WithName("CreateProduct")
         .WithOpenApi();
 
-        app.MapPut("/api/products/{id}", async (int id, Product inputProduct, ClothingStoreContext db) =>
+        app.MapPut("/api/products/{id}", async (int id, ProductCreateDto dto, ClothingStoreContext db) =>
         {
             var product = await db.Products.FindAsync(id);
             if (product is null) return Results.NotFound();
 
-            product.Name = inputProduct.Name;
-            product.Description = inputProduct.Description;
-            product.Price = inputProduct.Price;
-            product.ImageUrl = inputProduct.ImageUrl;
+            product.Name = dto.Name;
+            product.Description = dto.Description;
+            product.Price = dto.Price;
+            product.ImageUrl = dto.ImageUrl;
 
             await db.SaveChangesAsync();
             return Results.NoContent();
