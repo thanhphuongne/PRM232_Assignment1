@@ -12,6 +12,7 @@ export default function ProductDetail() {
   const [product, setProduct] = useState<Product | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const id = parseInt(params.id as string);
 
@@ -30,15 +31,18 @@ export default function ProductDetail() {
     fetchProduct();
   }, [id]);
 
-  const handleDelete = async () => {
-    if (confirm('Are you sure you want to delete this product?')) {
-      try {
-        await deleteProduct(id);
-        router.push('/');
-      } catch (error) {
-        console.error('Failed to delete product:', error);
-        setError('Failed to delete product. Please try again.');
-      }
+  const handleDelete = () => {
+    setShowConfirm(true);
+  };
+
+  const confirmDelete = async () => {
+    setShowConfirm(false);
+    try {
+      await deleteProduct(id);
+      router.push('/');
+    } catch (error) {
+      console.error('Failed to delete product:', error);
+      setError('Failed to delete product. Please try again.');
     }
   };
 
@@ -140,6 +144,37 @@ export default function ProductDetail() {
           </div>
         </div>
       </div>
+
+      {/* Confirmation Modal */}
+      {showConfirm && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-3xl shadow-2xl p-8 max-w-md w-full mx-4">
+            <div className="text-center">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-red-100 mb-4">
+                <svg className="h-8 w-8 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">Delete Product</h3>
+              <p className="text-gray-600 mb-6">Are you sure you want to delete this product? This action cannot be undone.</p>
+              <div className="flex space-x-4">
+                <button
+                  onClick={() => setShowConfirm(false)}
+                  className="flex-1 bg-gray-200 text-gray-800 py-3 px-6 rounded-full hover:bg-gray-300 transition-all duration-300 font-semibold"
+                >
+                  Cancel
+                </button>
+                <button
+                  onClick={confirmDelete}
+                  className="flex-1 bg-red-600 text-white py-3 px-6 rounded-full hover:bg-red-700 transition-all duration-300 font-semibold"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
