@@ -16,6 +16,10 @@ public class Program
         }
         var builder = WebApplication.CreateBuilder(args);
 
+        // Configure the port for deployment platforms like Render
+        var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+        builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
+
         // Add services to the container.
         var connectionString = Environment.GetEnvironmentVariable("DATABASE_URL") ?? builder.Configuration.GetConnectionString("DefaultConnection");
         builder.Services.AddDbContext<ClothingStoreContext>(options =>
@@ -59,8 +63,8 @@ public class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
         app.UseCors("AllowAll");
+        app.UseHttpsRedirection();
         app.UseAuthorization();
 
         // Product CRUD endpoints
