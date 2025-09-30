@@ -2,6 +2,7 @@
 using System;
 using DotNetEnv;
 using Microsoft.EntityFrameworkCore;
+using ClothingStore.API.Models;
 
 namespace ClothingStore.API;
 

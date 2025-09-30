@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ClothingStore.API.Models;
 
 namespace ClothingStore.API;
 

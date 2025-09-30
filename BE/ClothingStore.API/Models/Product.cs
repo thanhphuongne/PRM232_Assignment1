@@ -1,4 +1,4 @@
-namespace ClothingStore.API;
+namespace ClothingStore.API.Models;
 
 public class Product
 {
