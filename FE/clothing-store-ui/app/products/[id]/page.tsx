@@ -3,7 +3,6 @@
 import { useEffect, useState } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getProduct, deleteProduct, Product } from '../../../lib/api';
 
 export default function ProductDetail() {
@@ -104,7 +103,7 @@ export default function ProductDetail() {
             <div className="md:w-1/2">
               {product.imageUrl ? (
                 <div className="relative h-96 md:h-full">
-                  <Image src={product.imageUrl} alt={product.name} width={600} height={400} className="w-full h-full object-cover" />
+                  <img src={product.imageUrl} alt={product.name} className="w-full h-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
                 </div>
               ) : (
